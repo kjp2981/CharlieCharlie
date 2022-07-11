@@ -31,6 +31,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GetItem()
+    {
+        if (colls != null)
+        {
+            Debug.Log($"{colls.name}");
+            Inventory.Instance.AddItem(colls.GetComponent<Item>().ItemSO);
+            colls.gameObject.SetActive(false);
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
