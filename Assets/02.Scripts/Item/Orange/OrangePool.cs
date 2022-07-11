@@ -18,9 +18,13 @@ public class OrangePool : Item
         }
     }
 
+    public override void Reset()
+    {
+        StopAllCoroutines();
+    }
+
     public override void UseItem()
     {
-
         transform.position = Define.Player.transform.position;
         StartCoroutine(NTimeWork(3));
     }

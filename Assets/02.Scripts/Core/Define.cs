@@ -5,8 +5,21 @@ using UnityEngine;
 
 public class Define
 {
+    private static Camera cam = null;
     private static CinemachineVirtualCamera vCam = null;
     private static GameObject player = null;
+
+    public static Camera Cam
+    {
+        get
+        {
+            if(cam == null)
+            {
+                cam = Camera.main;
+            }
+            return cam;
+        }
+    }
 
     public static CinemachineVirtualCamera VCam
     {
