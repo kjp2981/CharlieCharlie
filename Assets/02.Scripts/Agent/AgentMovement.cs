@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class AgentMovement : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    public bool isAdrenaline, isAdrenalining;
-
+    public bool isAdrenaline, isAdrenalining = false;
+    public bool isIdBag = false;
     [SerializeField]
     private MovementDataSO moveData;
 
@@ -56,10 +56,21 @@ public class AgentMovement : MonoBehaviour
 
         if(isAdrenaline)
         {
-            StartCoroutine(SpeedUP());
+            StartCoroutine(AdSpeedUP());
         }
+
+        if(isIdBag)
+        {
+            IdSpeedUP();
+        }
+
     }
-    public IEnumerator SpeedUP()
+
+    public void IdSpeedUP()
+    {
+        currentVelocity *= 1.05f;
+    }
+    public IEnumerator AdSpeedUP()
     {
         if(isAdrenaline)
         {
