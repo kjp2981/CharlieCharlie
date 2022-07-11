@@ -39,6 +39,4 @@ public class PoolManager
     {
         _pools[obj.name.Trim()].Push(obj);
     }
-
-
 }
