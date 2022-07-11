@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Collider2D colls;
     [SerializeField]
     private float radius = 1f;
+    public GameObject orangeText;
 
     [SerializeField]
     private bool isFlashLight = false;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
             colls.gameObject.SetActive(false);
         }
     }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
