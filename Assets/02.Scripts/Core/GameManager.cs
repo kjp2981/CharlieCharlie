@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private PoolingListSO poolingList;
+
+    private Transform playerTrm;
+    public Transform PlayerTrm
+    {
+        get
+        {
+            if(playerTrm == null)
+            {
+                playerTrm = Define.Player.transform;
+            }
+            return playerTrm;
+        }
+    }
 
     void Awake()
     {
@@ -26,10 +40,5 @@ public class GameManager : MonoBehaviour
         {
             PoolManager.Instance.CreatePool(pair.prefab, pair.poolCnt);
         }
-    }
-
-    private void Update()
-    {
-
     }
 }
