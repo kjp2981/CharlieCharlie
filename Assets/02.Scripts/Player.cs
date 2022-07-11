@@ -31,11 +31,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GetItem()
-    {
-        
-    }
-
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {

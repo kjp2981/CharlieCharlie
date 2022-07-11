@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class AgentAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private SpriteRenderer spriteRenderer = null;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LookAt(Vector2 input)
     {
-        
+        if(input.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(input.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }

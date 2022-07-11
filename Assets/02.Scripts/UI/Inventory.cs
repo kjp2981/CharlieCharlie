@@ -4,29 +4,46 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory Instance = null;
+    public List<ItemSO> items;
 
-    private Dictionary<ItemType, int> itemDic = new Dictionary<ItemType, int>();
+    [SerializeField]
+    private Transform slotParent;
+    [SerializeField]
+    private Slot[] slots;
+
+    private void OnValidate()
+    {
+        slots = slotParent.GetComponentsInChildren<Slot>();
+    }
 
     private void Awake()
     {
-        if (Instance != null)
-            Debug.LogError("Multiple GameManager is running");
-        Instance = this;
+        FreshSlot();
     }
 
-    public void AddItem(ItemType type)
+    public void FreshSlot()
     {
-        if(itemDic.ContainsKey(type) == true)
+        int i = 0;
+        for(; i < items.Count && i < slots.Length; i++)
         {
-            itemDic.Add(type, 1);
+            slots[i].Item = items[i];
+        }
+        for(; i < slots.Length; i++)
+        {
+            slots[i].Item = null;
+        }
+    }
+
+    public void AddItem(ItemSO item)
+    {
+        if(items.Count < slots.Length)
+        {
+            items.Add(item);
+            FreshSlot();
         }
         else
         {
-            int count = 0;
-            itemDic.TryGetValue(type, out count);
-
-            itemDic.Add(type, count + 1);
+            Debug.Log("½½·ÔÀÌ °¡µæ Â÷ÀÖ½À´Ï´Ù.");
         }
     }
 }
