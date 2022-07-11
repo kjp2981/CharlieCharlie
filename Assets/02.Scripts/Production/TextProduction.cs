@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
-public class TextProduction: PoolableMono
+
+public class TextProduction: MonoBehaviour
 {
     float randomX;
     float randomY;
@@ -23,13 +24,9 @@ public class TextProduction: PoolableMono
         randomY = Random.Range(-10800f, 10800f);
 
 
-        NewBehaviourScript obj = PoolManager.Instance.Pop("Square") as NewBehaviourScript;
+        Square obj = PoolManager.Instance.Pop("Square") as Square;
 
         obj.transform.position = new Vector2(randomX, randomY);
-        obj.transform.position = Camera.main.ScreenToViewportPoint(obj.transform.position);
-    }
-
-    public override void Reset()
-    {
+        obj.transform.position = Cam.ScreenToViewportPoint(obj.transform.position);
     }
 }

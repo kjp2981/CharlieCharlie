@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         if (colls != null)
         {
             Debug.Log($"{colls.name}");
-            Inventory.Instance.AddItem(colls.GetComponent<Item>().ItemSO);
+            Inventory.Instance.AddItem(colls.gameObject);
             colls.gameObject.SetActive(false);
         }
     }

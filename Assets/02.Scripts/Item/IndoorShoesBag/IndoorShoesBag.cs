@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
+
 public class IndoorShoesBag : Item
 {
     private bool IdspeedUp;
@@ -14,6 +15,11 @@ public class IndoorShoesBag : Item
     {
         IdspeedUp = true;
         Define.Player.GetComponent<AgentMovement>().isIdBag = IdspeedUp;
+        Debug.Log("Use IndoorShoes");
     }
 
+    public override void Reset()
+    {
+        
+    }
 }
