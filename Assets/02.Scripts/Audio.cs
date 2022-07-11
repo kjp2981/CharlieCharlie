@@ -28,6 +28,6 @@ public class Audio : PoolableMono
 
     public override void Reset()
     {
-        
+        audioSource.pitch = 1;
     }
 }

@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private PoolingListSO poolingList;
-    [SerializeField]
-    private AudioClip clip;
 
     void Awake()
     {
@@ -32,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-            SoundManager.Instance.PlaySound(clip);
+
     }
 }
