@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
-public class TextProduction: PoolableMono
+public class TextProduction: MonoBehaviour
 {
     float randomX;
     float randomY;
@@ -29,7 +29,4 @@ public class TextProduction: PoolableMono
         obj.transform.position = Camera.main.ScreenToViewportPoint(obj.transform.position);
     }
 
-    public override void Reset()
-    {
-    }
 }

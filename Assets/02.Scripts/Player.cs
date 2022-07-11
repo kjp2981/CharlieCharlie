@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool isFlashLight = false;
 
+    public bool isChalkOn;
+
     private int hitLayer;
 
     private void Start()
@@ -21,12 +23,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(isFlashLight == true)
+        if (isFlashLight == true)
         {
             colls = Physics2D.OverlapCircle(transform.position, radius, hitLayer);
         }
 
-        if(colls != null)
+        if (colls != null)
         {
             Debug.Log("아이템 있음!");
         }
