@@ -18,4 +18,9 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(name);
     }
+
+    public Scene CurrentScene()
+    {
+        return UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+    }
 }

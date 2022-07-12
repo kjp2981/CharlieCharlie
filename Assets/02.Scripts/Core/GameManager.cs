@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Define;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PoolingListSO poolingList;
 
+    private Scene curScene;
+
     private Transform playerTrm;
+
+    private bool isSettingScene;
+
+    private void Update()
+    {
+        
+        
+    }
     public Transform PlayerTrm
     {
         get
@@ -25,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        isSettingScene = false;
         if (Instance != null)
             Debug.LogError("Multiple GameManager is running");
         Instance = this;
