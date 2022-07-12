@@ -12,6 +12,9 @@ public class AgentMovement : MonoBehaviour
     private MovementDataSO moveData;
 
     private float currentVelocity;
+    private float normalVelocity;
+    private float adrenalineVelocity;
+    private float idBagVelocity;
     private Vector2 moveDirection;
 
     public UnityEvent<float> OnVelocityChange;
@@ -19,6 +22,9 @@ public class AgentMovement : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        normalVelocity = currentVelocity;
+        adrenalineVelocity = currentVelocity *= 1.5f;
+        idBagVelocity = currentVelocity * 1.05f;
     }
 
     public void Movement(Vector2 input)
@@ -51,7 +57,7 @@ public class AgentMovement : MonoBehaviour
     private void FixedUpdate()
     {
         OnVelocityChange?.Invoke(currentVelocity);
-        
+
         rigid.velocity = moveDirection * currentVelocity;
 
         if(isAdrenaline)
@@ -68,13 +74,13 @@ public class AgentMovement : MonoBehaviour
 
     public void IdSpeedUP()
     {
-        currentVelocity *= 1.05f;
+        currentVelocity = idBagVelocity;
     }
     public IEnumerator AdSpeedUP()
     {
         if(isAdrenaline)
         {
-            currentVelocity *= 1.5f;
+            currentVelocity = adrenalineVelocity;
             isAdrenalining = true;
             isAdrenaline = false;
             Debug.Log($"»¡¶óÁü. ÇöÀç ¼Óµµ : {currentVelocity}");
@@ -83,7 +89,7 @@ public class AgentMovement : MonoBehaviour
         yield return new WaitForSeconds(5);
         isAdrenalining = false;
         Debug.Log($"»¡¶óÁø³¡. ÇöÀç ¼Óµµ : {currentVelocity}");
-        currentVelocity /= 1.5f;
+        currentVelocity = normalVelocity;
 
     }
 }
