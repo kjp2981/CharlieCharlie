@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class AgentAnimation : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer = null;
+    private Animator animator = null;
+
+    private readonly int hashH = Animator.StringToHash("h");
+    private readonly int hashV = Animator.StringToHash("v");
+    private readonly int hashIsMove = Animator.StringToHash("isMove");
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    public void MoveAnim(Vector2 input)
     {
-        
-    }
+        animator.SetFloat(hashH, input.x);
+        animator.SetFloat(hashV, input.y);
 
-    public void LookAt(Vector2 input)
-    {
-        if(input.x > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if(input.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
+        animator.SetBool(hashIsMove, input != Vector2.zero);
     }
 }
