@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         chaseTimer = 20f;
-        buttonManager.LoadQuestion();
+        ButtonManager.Instance.LoadQuestion();
     }
 
     public void ChaseFunc()
