@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     private Collider2D colls;
 
     private Collider2D doorChekcColls;
@@ -28,17 +29,21 @@ public class Player : MonoBehaviour
 
     private int doorLayer;
 
-    
-
     [SerializeField]
     private ItemSO item;
+    private LightChange lightChange;
+
+    public float questionTimer = 5f;
+    public float chaseTimer = 0f;
 
     private void Start()
     {
+        lightChange = GetComponent<LightChange>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
         doorLayer = 1 << LayerMask.NameToLayer("Door");
         
+        StartCoroutine(QuestionTimer());
     }
 
     private void Update()
@@ -71,13 +76,67 @@ public class Player : MonoBehaviour
                 if (door.Key.name == Inventory.Instance.keyItems[i].GetComponent<Item>().ItemSO.name)
                 {
                     doorChekcColls.gameObject.GetComponent<Collider2D>().enabled = false;
-                    doorChekcColls.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0); // ³ªÁß¿¡ ¼öÁ¤
+                    doorChekcColls.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0); // ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½
                     return;
                 }
             }
         }
         else
-            Debug.Log("¼ýÀÚ ºÎÁ·");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+    }
+
+    IEnumerator QuestionTimer()
+    {
+        while (questionTimer > 1.0f)
+        {
+            questionTimer -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
+        chaseTimer = 20f;
+        buttonManager.LoadQuestion();
+    }
+
+    public void ChaseFunc()
+    {
+        StartCoroutine(ChaseStart());
+    }
+
+    IEnumerator ChaseStart()
+    {
+        lightChange.ChangeRedLight();
+        switch (Inventory.Instance.keyItems.Count)
+        {
+            case 1:
+                questionTimer = 30f;
+                break;
+            case 2:
+                questionTimer = 25f;
+                break;
+            case 3:
+                questionTimer = 20f;
+                break;
+            case 4:
+                questionTimer = 15f;
+                break;
+            case 5:
+                questionTimer = 10f;
+                break;
+            case 6:
+                questionTimer = 5f;
+                break;
+            default:
+                questionTimer = 30f;
+                break;
+        }
+        while (chaseTimer > 0.0f)
+        {
+            chaseTimer -= 1f;
+            if(chaseTimer<=0.0f)
+                lightChange.ChangeYelowLight();
+            yield return new WaitForSeconds(1f);
+        }
+
+        StartCoroutine(QuestionTimer());
     }
 
     public void GetItem()
