@@ -17,6 +17,11 @@ public class EnemyAIBrain : MonoBehaviour
     private AIActionData _aiActionData;
     public AIActionData AIActionData => _aiActionData;
 
+    [SerializeField]
+    private float delayTime = 3f;
+
+    public float DelayTime { get => delayTime; set => delayTime = value; }
+
     protected virtual void Awake()
     {
         _aiActionData = transform.Find("AI").GetComponent<AIActionData>();

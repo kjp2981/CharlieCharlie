@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private bool isFlashLight = false;
+    [SerializeField]
+    private bool isBox = false;
+    public bool IsBox => isBox;
 
     [SerializeField]
     private GameObject handLight;
