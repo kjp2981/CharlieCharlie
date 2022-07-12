@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using static Define;
 
-
-public class OrangeEffect : PoolableMono
+public class ChalktToEatPool : PoolableMono
 {
     public override void Reset()
     {

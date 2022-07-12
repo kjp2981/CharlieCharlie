@@ -16,4 +16,7 @@ public class IndoorShoesBag : Item
         Define.Player.GetComponent<AgentMovement>().isIdBag = IdspeedUp;
     }
 
+    public override void Reset()
+    {
+    }
 }

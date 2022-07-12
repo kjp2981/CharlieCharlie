@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4150388610577756350}
   - component: {fileID: 4150388610577756349}
   - component: {fileID: 5133174604161399742}
-  - component: {fileID: 2806917352307472153}
   m_Layer: 0
   m_Name: Adrenalin Shot
   m_TagString: Untagged
@@ -99,15 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
---- !u!114 &2806917352307472153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150388610577756348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ca89a541bde9147ab3a203b5e7a29a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -19,4 +19,8 @@ public class AdrenalinePistol : Item
             isAd = !isAd;
         Define.Player.GetComponent<AgentMovement>().isAdrenaline = isAd;
     }
+
+    public override void Reset()
+    {
+    }
 }

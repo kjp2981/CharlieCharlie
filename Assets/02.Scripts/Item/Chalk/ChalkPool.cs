@@ -3,21 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Define;
 
-public class ChalkPool : MonoBehaviour
+public class ChalkPool : Item
 {
+    public float moveSpeed = 20f;
+    private Vector3 startPos;
 
+    public Rigidbody2D chalkRigidbody;
+    public GameObject ChalkObj;
+    private bool isChalkOn;
+    Vector3 dir;
+
+
+    private void Start()
+    {
+        isChalkOn = false;
+        startPos = Define.Player.transform.position;
+    }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-            CreateText();
-
+        if (Input.GetMouseButton(0))
+        {
+            dir = Input.mousePosition - startPos;
+            isChalkOn = true;
+        }
     }
 
-    void CreateText()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        ChalkPoolale obj = PoolManager.Instance.Pop("Chalk") as ChalkPoolale;
+        PoolManager.Instance.Push(this);
+    }
 
-        obj.transform.position = Define.Player.transform.position;
-        obj.transform.position = Camera.main.ScreenToViewportPoint(obj.transform.position);
+    public override void UseItem()
+    {
+        if(isChalkOn)
+        {
+            chalkRigidbody.AddForce(dir * 100f,ForceMode2D.Impulse);
+        }
+    }
+
+    
+    public override void Reset()
+    {
     }
 }
