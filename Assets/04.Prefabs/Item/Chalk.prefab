@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c15bb3d05d02e42a811d40b3b25d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 0}
+  itemSO: {fileID: 11400000, guid: 9f2f9efccc04f9d47a1cbbeb0fd80dc1, type: 2}
   moveSpeed: 20
   chalkRigidbody: {fileID: 2522947160136597393}
   ChalkObj: {fileID: 3812158258623612638}

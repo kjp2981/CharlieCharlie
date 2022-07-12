@@ -7,17 +7,15 @@ using DG.Tweening;
 
 public class OrangePool : Item
 {
+    public override void Reset()
+    {
+
+    }
     public float moveSpeed = 20f;
     private Vector3 startPos;
-
     private void Start()
     {
         startPos = Define.Player.transform.position + new Vector3(0, 100);
-    }
-
-    public override void Reset()
-    {
-        StopAllCoroutines();
     }
 
     public override void UseItem()

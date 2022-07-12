@@ -7,11 +7,11 @@ public class ButtonManager : MonoBehaviour
     public GameObject SettingCanvas;
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     public void LoadGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
     public void LoadSetting()
     {
