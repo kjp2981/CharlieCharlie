@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Setting : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject SettingGrp;
+    void Awake()
     {
-        
+        SettingGrp.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActiveSetting(bool value)
     {
-        
+        SettingGrp.SetActive(value);
+    }
+
+    [System.Obsolete]
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SettingGrp.SetActive(!SettingGrp.active);
+            if(SettingGrp.active == true)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = 1;
+        }
     }
 }
