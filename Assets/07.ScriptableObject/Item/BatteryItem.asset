@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BatteryItem
   m_EditorClassIdentifier: 
   itemName: Battery
-  itemImage: {fileID: 21300000, guid: 44a054df1702e39458b7072b08d0f212, type: 3}
+  itemImage: {fileID: 21300000, guid: ceed89b01bac9a34b8e60ecb2493973f, type: 3}
   isKey: 0

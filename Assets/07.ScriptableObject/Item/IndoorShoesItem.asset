@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IndoorShoesItem
   m_EditorClassIdentifier: 
   itemName: IndoorShoes
-  itemImage: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  itemImage: {fileID: 21300000, guid: 5546b6df6a61dca49b2588310c1995ed, type: 3}
   isKey: 0

@@ -103,8 +103,11 @@ public class Inventory : MonoBehaviour
 
     public void UseItem()
     {
-        items[currentSlotIndex].GetComponent<Item>().UseItem();
-        RemoveItem();
+        if (items.Count > 0)
+        {
+            items[currentSlotIndex].GetComponent<Item>().UseItem();
+            RemoveItem();
+        }
     }
 
     public void ChangeSlotIndex(int value)

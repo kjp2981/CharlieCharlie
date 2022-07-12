@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OrangeItem
   m_EditorClassIdentifier: 
   itemName: Orange
-  itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemImage: {fileID: 21300000, guid: 91067226a0951324faf523224cd5881b, type: 3}
   isKey: 0
