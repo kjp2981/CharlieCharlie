@@ -7,6 +7,9 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance = null;
 
     [SerializeField]
+    private AudioSource bgmAudioSource = null;
+
+    [SerializeField]
     private float soundRandomness = 0.2f;
 
     void Awake()
@@ -14,6 +17,13 @@ public class SoundManager : MonoBehaviour
         if (Instance != null)
             Debug.LogError("Multiple SoundManager is running");
         Instance = this;
+    }
+
+    public void PlayBGMSound(AudioClip clip)
+    {
+        bgmAudioSource.Stop();
+        bgmAudioSource.clip = clip;
+        bgmAudioSource.Play();
     }
 
     public void PlaySound(AudioClip clip)
