@@ -12,12 +12,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool isFlashLight = false;
 
+    [SerializeField]
+    private GameObject handLight;
+
+    private SpriteRenderer handLightSprite;
+    [SerializeField]
+    private int playerSortingOrder = 10;
+
     public bool isChalkOn;
 
     private int hitLayer;
 
     private void Start()
     {
+        handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
     }
 
@@ -44,6 +52,63 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GetHandLight()
+    {
+        if(handLight.activeSelf==false)
+            handLight.SetActive(true);
+        else
+            handLight.SetActive(false);
+    }
+
+    public void rotateHandLight(Vector2 pos)
+    {
+        if (pos!=Vector2.zero)
+        {
+            //if ((handLight.transform.rotation.z > 90 && handLight.transform.rotation.z < 180) || (handLight.transform.rotation.z >-180&& handLight.transform.rotation.z < -90))
+            //{
+            //    handLight.transform.position = new Vector3(handLight.transform.position.x, handLight.transform.position.y, 0f);
+            //    handLightSprite.flipY = false;
+            //}
+            //else
+            //{
+            //    handLight.transform.position = new Vector3(handLight.transform.position.x, handLight.transform.position.y, 1f);
+            //    handLightSprite.flipY = true;
+            //}
+
+            float angle = Mathf.Atan2(pos.y, -pos.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.back);
+            handLight.transform.rotation = Quaternion.Slerp(handLight.transform.rotation, rotation, 10 * Time.deltaTime);
+
+            //if(handLight.transform.rotation.z > 90 || handLight.transform.rotation.z < -90)
+            //{
+            //    handLight.transform.position = new Vector3(handLight.transform.position.x, handLight.transform.position.y, 0f);
+            //    handLightSprite.flipY = false;
+            //}
+            //else
+            //{
+            //    handLight.transform.position = new Vector3(handLight.transform.position.x, handLight.transform.position.y, 1f);
+            //    handLightSprite.flipY = true;
+            //}
+
+            if(angle > 90f || angle < -90f)
+            {
+                handLightSprite.flipY = true;
+            }
+            else
+            {
+                handLightSprite.flipY = false;
+            }
+
+            if(angle > 0 && angle < 270)
+            {
+                handLightSprite.sortingOrder = playerSortingOrder + 1;
+            }
+            else
+            {
+                handLightSprite.sortingOrder = playerSortingOrder - 1;
+            }
+        }
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
