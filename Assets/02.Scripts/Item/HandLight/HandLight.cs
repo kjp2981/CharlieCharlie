@@ -3,53 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class HandLight : Item
+public class HandLight : MonoBehaviour
 {
-    private bool isUseHandLight;
-    private bool isGetHandLight;
+    public Light2D handLight;
+    protected float handLightTimer = 30;
 
-    private Light2D handLight;
-    protected int handLightTimer = 30;
-
-    private void Start()
+    private void OnEnable()
     {
-        handLight = GameObject.Find("handLight Effect").GetComponent<Light2D>();
-    }
-
-    public void GetItem()
-    {
-        isGetHandLight = true;
-    }
-
-    public override void Reset()
-    {
-        StopAllCoroutines();
+        StartCoroutine(Brightness());
     }
 
     IEnumerator Brightness()
     {
-        while(handLightTimer>0.0f&&handLight.intensity>=0.034f)
+        while (handLightTimer > 0.0f && handLight.intensity >= 0.0034f)
         {
-            handLight.intensity -= 0.034f;
-            handLightTimer -= 1;
-            yield return new WaitForSeconds(1f);
+            handLight.intensity -= 0.0034f;
+            handLightTimer -= 0.01f;
+            yield return new WaitForSeconds(0.1f);
         }
     }
-
-    public override void UseItem()
-    {
-        if (isGetHandLight)
-        {
-            if (!isUseHandLight&&handLightTimer>0)
-            {
-                gameObject.SetActive(true);
-                StartCoroutine(Brightness());
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
-        }
-    }
-
 }

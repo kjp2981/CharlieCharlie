@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Battery : HandLight
+public class Battery : Item
 {
     public override void Reset()
     {
@@ -11,6 +11,6 @@ public class Battery : HandLight
 
     public override void UseItem()
     {
-        handLightTimer = 30;
+        //handLightTimer = 30;
     }
 }
