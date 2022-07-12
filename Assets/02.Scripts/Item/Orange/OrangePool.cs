@@ -7,11 +7,6 @@ using DG.Tweening;
 
 public class OrangePool : Item
 {
-    public override void Reset()
-    {
-
-    }
-
     public float moveSpeed = 20f;
     private Vector3 startPos;
 

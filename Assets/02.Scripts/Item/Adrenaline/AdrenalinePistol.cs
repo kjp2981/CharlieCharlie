@@ -23,8 +23,4 @@ public class AdrenalinePistol : Item
     {
         
     }
-
-    public override void Reset()
-    {
-    }
 }
