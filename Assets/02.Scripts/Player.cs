@@ -23,10 +23,17 @@ public class Player : MonoBehaviour
 
     private int hitLayer;
 
+    private ButtonManager buttonManager;
+
+    public float questionTimer = 5f;
+    public float chaseTimer = 0f;
+
     private void Start()
     {
+        buttonManager = GameObject.Find("ButtonManager").GetComponent<ButtonManager>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
+        StartCoroutine(QuestionTimer());
     }
 
     private void Update()
@@ -40,6 +47,56 @@ public class Player : MonoBehaviour
         {
             Debug.Log("아이템 있음!");
         }
+    }
+
+    IEnumerator QuestionTimer()
+    {
+        while(questionTimer > 1.0f)
+        {
+            questionTimer -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
+        chaseTimer = 20f;
+        buttonManager.LoadQuestion();
+    }
+
+    public void ChaseFunc()
+    {
+        StartCoroutine(ChaseStart());
+    }
+
+    IEnumerator ChaseStart()
+    {
+        switch (Inventory.Instance.keyItems.Count)
+        {
+            case 1:
+                questionTimer = 30f;
+                break;
+            case 2:
+                questionTimer = 25f;
+                break;
+            case 3:
+                questionTimer = 20f;
+                break;
+            case 4:
+                questionTimer = 15f;
+                break;
+            case 5:
+                questionTimer = 10f;
+                break;
+            case 6:
+                questionTimer = 5f;
+                break;
+            default:
+                questionTimer = 30f;
+                break;
+        }
+        while (chaseTimer > 0.0f)
+        {
+            chaseTimer -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
+        StartCoroutine(QuestionTimer());
     }
 
     public void GetItem()
