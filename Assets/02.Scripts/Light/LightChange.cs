@@ -12,7 +12,6 @@ public class LightChange : MonoBehaviour
     {
         playerLight = GameObject.Find("Light").GetComponent<Light2D>();
         handLight = GameObject.Find("handLight Effect").GetComponent<Light2D>();
-        ChangeLight();
     }
 
     // Update is called once per frame
@@ -21,14 +20,15 @@ public class LightChange : MonoBehaviour
         //ChangeLight();
     }
 
-    void ChangeLight()
+    public void ChangeRedLight()
     {
         playerLight.color = new Color(0.6f, 0, 0, 1);
         handLight.color = new Color(0.6f, 0, 0, 1);
-        //if(handLight.intensity>=0.034f)
-        //{
-        //    playerLight.intensity -= 0.034f;
-        //    handLight.intensity -= 0.034f;
-        //}
+    }
+
+    public void ChangeYelowLight()
+    {
+        playerLight.color = new Color(1f, 0.76f, 0.4f, 1);
+        handLight.color = new Color(1f, 0.76f, 0.4f, 1);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     private Collider2D colls;
     [SerializeField]
     private float radius = 1f;
@@ -24,12 +25,14 @@ public class Player : MonoBehaviour
     private int hitLayer;
 
     private ButtonManager buttonManager;
+    private LightChange lightChange;
 
     public float questionTimer = 5f;
     public float chaseTimer = 0f;
 
     private void Start()
     {
+        lightChange = GetComponent<LightChange>();
         buttonManager = GameObject.Find("ButtonManager").GetComponent<ButtonManager>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
@@ -51,7 +54,7 @@ public class Player : MonoBehaviour
 
     IEnumerator QuestionTimer()
     {
-        while(questionTimer > 1.0f)
+        while (questionTimer > 1.0f)
         {
             questionTimer -= 1f;
             yield return new WaitForSeconds(1f);
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
 
     IEnumerator ChaseStart()
     {
+        lightChange.ChangeRedLight();
         switch (Inventory.Instance.keyItems.Count)
         {
             case 1:
@@ -94,8 +98,11 @@ public class Player : MonoBehaviour
         while (chaseTimer > 0.0f)
         {
             chaseTimer -= 1f;
+            if(chaseTimer<=0.0f)
+                lightChange.ChangeYelowLight();
             yield return new WaitForSeconds(1f);
         }
+
         StartCoroutine(QuestionTimer());
     }
 

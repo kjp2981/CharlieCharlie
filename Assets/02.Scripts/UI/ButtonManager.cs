@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static Define;
 
 public class ButtonManager : MonoBehaviour
 {
+    public List<Sprite> sprite = new List<Sprite>();
+
+    public Image iamgeOne;
+    public Image imageTwo;
+    public Image imageThree;
+
+    public int curCount = 0;
+    public int maxCount = 12;
+
     public static ButtonManager Instance = null;
 
     public GameObject SettingCanvas;
@@ -24,6 +34,7 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         player = Define.Player.GetComponent<Player>();
+        ShuffleList(sprite);
     }
 
     public void LoadMainMenu()
@@ -45,6 +56,14 @@ public class ButtonManager : MonoBehaviour
 
     public void LoadQuestion()
     {
+        iamgeOne.sprite = sprite[curCount++];
+        imageTwo.sprite = sprite[curCount++];
+        imageThree.sprite = sprite[curCount++];
+        if (curCount >= maxCount)
+        {
+            ShuffleList(sprite);
+            curCount = 0;
+        }
         QuestionCanvas.SetActive(true);
     }
 
@@ -70,5 +89,24 @@ public class ButtonManager : MonoBehaviour
     {
         AnswerCanvas.SetActive(false);
         player.ChaseFunc();
+    }
+
+
+    public void ShuffleList<T>(List<T> list)
+    {
+        int random1;
+        int random2;
+
+        T tmp;
+
+        for (int index = 0; index < list.Count; ++index)
+        {
+            random1 = UnityEngine.Random.Range(0, list.Count);
+            random2 = UnityEngine.Random.Range(0, list.Count);
+
+            tmp = list[random1];
+            list[random1] = list[random2];
+            list[random2] = tmp;
+        }
     }
 }
