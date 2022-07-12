@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Collider2D colls;
+
+    private Collider2D doorChekcColls;
+
     [SerializeField]
     private float radius = 1f;
     public GameObject orangeText;
@@ -23,10 +26,19 @@ public class Player : MonoBehaviour
 
     private int hitLayer;
 
+    private int doorLayer;
+
+    
+
+    [SerializeField]
+    private ItemSO item;
+
     private void Start()
     {
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
+        doorLayer = 1 << LayerMask.NameToLayer("Door");
+        
     }
 
     private void Update()
@@ -34,12 +46,38 @@ public class Player : MonoBehaviour
         if (isFlashLight == true)
         {
             colls = Physics2D.OverlapCircle(transform.position, radius, hitLayer);
+            doorChekcColls = Physics2D.OverlapCircle(transform.position, 1, doorLayer);
         }
+    }
 
-        if (colls != null)
+    public void CheckIsDoor()
+    {
+        if(doorChekcColls != null)
         {
-            Debug.Log("아이템 있음!");
+            if(doorChekcColls.gameObject.CompareTag("Door"))
+            {
+                KeyCheck();
+            }
         }
+    }
+    public void KeyCheck()
+    {
+        int itemsCnt = Inventory.Instance.keyItems.Count;
+        DoorCtrl door = doorChekcColls.GetComponent<DoorCtrl>();
+        if (Inventory.Instance.keyItems.Count > 0)
+        {
+            for (int i = 0; i < itemsCnt; i++)
+            {
+                if (door.Key.name == Inventory.Instance.keyItems[i].GetComponent<Item>().ItemSO.name)
+                {
+                    doorChekcColls.gameObject.GetComponent<Collider2D>().enabled = false;
+                    doorChekcColls.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0); // 나중에 수정
+                    return;
+                }
+            }
+        }
+        else
+            Debug.Log("숫자 부족");
     }
 
     public void GetItem()
@@ -110,11 +148,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    private RaycastHit2D ray;
+
+
+    [SerializeField]
+    private float rayDistance = 1;
+    [SerializeField]
+    private LayerMask rayHitLayer;
+
+    
+
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.color = Color.white;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 1);
         Gizmos.color = Color.white;
     }
 #endif

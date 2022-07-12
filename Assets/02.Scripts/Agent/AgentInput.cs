@@ -10,6 +10,7 @@ public class AgentInput : MonoBehaviour
     public UnityEvent<int> OnChangeItem = null; // 숫자키 1, 2, 3.. 눌렀을 때
     public UnityEvent OnUseItem = null; // 마우스 좌클릭 아마도
     public UnityEvent OnHandLight = null; // 손전등 이벤트
+    
 
     void Update()
     {

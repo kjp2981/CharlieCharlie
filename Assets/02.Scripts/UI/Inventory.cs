@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
 
     private int currentSlotIndex = 0;
 
+
     private void OnValidate()
     {
         itemSlots = itemSlotParent.GetComponentsInChildren<Slot>();
@@ -115,4 +116,5 @@ public class Inventory : MonoBehaviour
         currentSlotIndex = value;
         // UI À§Ä¡ ¿È±â±â
     }
+
 }
