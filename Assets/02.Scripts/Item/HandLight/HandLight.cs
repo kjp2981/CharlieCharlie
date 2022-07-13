@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 public class HandLight : MonoBehaviour
 {
     public Light2D handLight;
-    protected float handLightTimer = 30;
+    public float handLightTimer = 30;
 
     private void OnEnable()
     {
@@ -22,4 +22,5 @@ public class HandLight : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
 }

@@ -19,7 +19,7 @@ public class AgentInput : MonoBehaviour
         {
             Interaction();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !Define.Player.GetComponent<Player>().isQuestion())
         {
             UseItem();
         }

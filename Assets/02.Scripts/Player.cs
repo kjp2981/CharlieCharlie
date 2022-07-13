@@ -142,13 +142,21 @@ public class Player : MonoBehaviour
         StartCoroutine(QuestionTimer());
     }
 
+    public bool isQuestion()
+    {
+        return questionTimer == 0.0f;
+    }
+
     public void GetItem()
     {
-        if (colls != null)
+        if (isFlashLight == true)
         {
-            Debug.Log($"{colls.name}");
-            Inventory.Instance.AddItem(colls.gameObject);
-            colls.gameObject.SetActive(false);
+            if (colls != null)
+            {
+                Debug.Log($"{colls.name}");
+                Inventory.Instance.AddItem(colls.gameObject);
+                colls.gameObject.SetActive(false);
+            }
         }
     }
 
