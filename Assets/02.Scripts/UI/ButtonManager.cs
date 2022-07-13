@@ -146,7 +146,7 @@ public class ButtonManager : MonoBehaviour
     public void CloseAnswer()
     {
         AnswerCanvas.SetActive(false);
-        //Time.timeScale = 1;
+        CharlieTime = false;
         player.ChaseFunc();
     }
 
