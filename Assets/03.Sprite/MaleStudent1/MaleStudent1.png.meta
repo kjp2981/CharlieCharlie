@@ -990,8 +990,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      MaleStudent1_28: 6528997036605376270
       MaleStudent1_2: 5989367904787573669
-      MaleStudent1_14: 441892944023448529
       MaleStudent1_15: 57694469165780859
       MaleStudent1_0: -8301917221330030243
       MaleStudent1_30: 8151581168172869968
@@ -1025,7 +1025,7 @@ TextureImporter:
       MaleStudent1_7: 1388062068669567249
       MaleStudent1_3: -4438076902942618551
       MaleStudent1_13: 3904646205870126453
-      MaleStudent1_28: 6528997036605376270
+      MaleStudent1_14: 441892944023448529
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
