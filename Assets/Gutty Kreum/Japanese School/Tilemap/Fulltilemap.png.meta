@@ -1493,8 +1493,8 @@ TextureImporter:
       name: Fulltilemap_0
       rect:
         serializedVersion: 2
-        x: 595
-        y: 382
+        x: 0
+        y: 544
         width: 32
         height: 32
       alignment: 0
@@ -11179,7 +11179,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Fulltilemap_24: -1544943659601453190
-      Fulltilemap_66: 4238066509345486896
+      Fulltilemap_96: -2594545226355191381
       Fulltilemap_294: -5049071881179198754
       Fulltilemap_320: 5119834700530121636
       Fulltilemap_181: 4543287853772687641
@@ -11210,8 +11210,8 @@ TextureImporter:
       Fulltilemap_89: 4424855802136217161
       Fulltilemap_129: 1031888171917423959
       Fulltilemap_442: -2796585387534364447
-      Fulltilemap_417: -4535787317993825151
       Fulltilemap_158: -1740290104906474211
+      Fulltilemap_417: -4535787317993825151
       Fulltilemap_106: 6518477294525261911
       Fulltilemap_210: -6436655284397599832
       Fulltilemap_400: -1717771982954509942
@@ -11635,7 +11635,7 @@ TextureImporter:
       Fulltilemap_453: 2075036458031681142
       Fulltilemap_231: 7726945978634646488
       Fulltilemap_79: 5549772226941306750
-      Fulltilemap_96: -2594545226355191381
+      Fulltilemap_66: 4238066509345486896
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
