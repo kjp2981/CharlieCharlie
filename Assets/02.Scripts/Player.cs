@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
     private bool isFlashLight = false;
     [SerializeField]
     private bool isBox = false;
-    public bool IsBox => isBox;
+    public bool IsBox
+    {
+        get => isBox;
+        set => isBox = value;
+    }
 
     [SerializeField]
     private GameObject handLight;
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
         
         StartCoroutine(QuestionTimer());
     }
+
+
 
     private void Update()
     {
@@ -142,13 +148,21 @@ public class Player : MonoBehaviour
         StartCoroutine(QuestionTimer());
     }
 
+    public bool isQuestion()
+    {
+        return questionTimer == 0.0f;
+    }
+
     public void GetItem()
     {
-        if (colls != null)
+        if (isFlashLight == true)
         {
-            Debug.Log($"{colls.name}");
-            Inventory.Instance.AddItem(colls.gameObject);
-            colls.gameObject.SetActive(false);
+            if (colls != null)
+            {
+                Debug.Log($"{colls.name}");
+                Inventory.Instance.AddItem(colls.gameObject);
+                colls.gameObject.SetActive(false);
+            }
         }
     }
 

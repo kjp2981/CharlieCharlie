@@ -12,12 +12,18 @@ public class AgentMovement : MonoBehaviour
     private MovementDataSO moveData;
 
     private float currentVelocity;
+    public float CurrentVelocity
+    {
+        get => currentVelocity;
+        set => currentVelocity = value;
+    }
     private float normalVelocity;
     private float adrenalineVelocity;
     private float idBagVelocity;
     private Vector2 moveDirection;
 
     public UnityEvent<float> OnVelocityChange;
+    private Player player => Define.Player.GetComponent<Player>();
 
     private void Awake()
     {
@@ -58,7 +64,8 @@ public class AgentMovement : MonoBehaviour
     {
         OnVelocityChange?.Invoke(currentVelocity);
 
-        rigid.velocity = moveDirection * currentVelocity;
+        if(!player.IsBox)
+            rigid.velocity = moveDirection * currentVelocity;
 
         if(isAdrenaline)
         {

@@ -6,17 +6,22 @@ using UnityEngine.Events;
 public class AgentInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementKeyPress = null;
-    public UnityEvent OnInteractionKeyPress = null; // F¹öÆ° ´­¸¦¶§
-    public UnityEvent<int> OnChangeItem = null; // ¼ýÀÚÅ° 1, 2, 3.. ´­·¶À» ¶§
-    public UnityEvent OnUseItem = null; // ¸¶¿ì½º ÁÂÅ¬¸¯ ¾Æ¸¶µµ
-    public UnityEvent OnHandLight = null; // ¼ÕÀüµî ÀÌº¥Æ®
+    public UnityEvent OnInteractionKeyPress = null; // Fï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public UnityEvent<int> OnChangeItem = null; // ï¿½ï¿½ï¿½ï¿½Å° 1, 2, 3.. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public UnityEvent OnUseItem = null; // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½Æ¸ï¿½ï¿½ï¿½
+    public UnityEvent OnHandLight = null; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
     public ButtonManager buttonManager;
 
     public AudioClip lightClip;
 
     void Update()
     {
-        if(!buttonManager.CharlieTime)
+        // Move();
+        // if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     Interaction();
+        // }
+        if (Input.GetMouseButtonDown(0) && !Define.Player.GetComponent<Player>().isQuestion())
         {
             Move();
             if (Input.GetKeyDown(KeyCode.F))
