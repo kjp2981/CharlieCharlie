@@ -12,6 +12,8 @@ public class AgentInput : MonoBehaviour
     public UnityEvent OnHandLight = null; // 손전등 이벤트
     public ButtonManager buttonManager;
 
+    public AudioClip lightClip;
+
     void Update()
     {
         if(!buttonManager.CharlieTime)
@@ -27,6 +29,7 @@ public class AgentInput : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(1))
             {
+                SoundManager.Instance.PlaySound(lightClip);
                 UseHandLight();
             }
         }
