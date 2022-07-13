@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+    public GameObject BoxShow;
+
+    public bool isFstFloor;
+
     private Collider2D colls;
 
     private Collider2D doorChekcColls;
@@ -43,13 +46,16 @@ public class Player : MonoBehaviour
     public float questionTimer = 5f;
     public float chaseTimer = 0f;
 
+    public AudioClip mainBgmClip;
+
     private void Start()
-    {
-        lightChange = GetComponent<LightChange>();
+    {    
+      lightChange = GetComponent<LightChange>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
         doorLayer = 1 << LayerMask.NameToLayer("Door");
-        
+        isFstFloor = true;
+        BoxShow.SetActive(false);
         StartCoroutine(QuestionTimer());
     }
 
@@ -62,6 +68,12 @@ public class Player : MonoBehaviour
             colls = Physics2D.OverlapCircle(transform.position, radius, hitLayer);
             doorChekcColls = Physics2D.OverlapCircle(transform.position, 1, doorLayer);
         }
+        if(isBox)
+            BoxShow.SetActive(true);
+        else
+            BoxShow.SetActive(false);
+
+
     }
 
     public void CheckIsDoor()
@@ -145,6 +157,8 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+
+        SoundManager.Instance.PlayBGMSound(mainBgmClip);
         StartCoroutine(QuestionTimer());
     }
 

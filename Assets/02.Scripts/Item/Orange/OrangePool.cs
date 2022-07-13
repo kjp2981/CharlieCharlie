@@ -11,7 +11,7 @@ public class OrangePool : Item
     {
 
     }
-    public float moveSpeed = 20f;
+    public float moveSpeed = 1f;
     private Vector3 startPos;
     private void Start()
     {
@@ -20,12 +20,14 @@ public class OrangePool : Item
 
     public override void UseItem()
     {
-        transform.position = Define.Player.transform.position;
-        OrangePool obj = PoolManager.Instance.Pop("OrangeText") as OrangePool;
-        obj.transform.position = startPos;
+        Debug.Log("±Ö »ç¿ëÇÔ");
+        OrangeTextPool obj = PoolManager.Instance.Pop("OrangeText") as OrangeTextPool;
+        Vector3 pos = Define.Player.transform.position;
+        pos.z = 900;
+        obj.transform.position = pos;
         Sequence seq = DOTween.Sequence();
-        seq.Append(obj.transform.DOMoveY(startPos.y + 400, .3f));
-        seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, .3f));
+        seq.Append(obj.transform.DOMoveY(startPos.y + 2, 1f));
+        seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, 1f));
         seq.AppendCallback(() => PoolManager.Instance.Push(obj));
     }
 }

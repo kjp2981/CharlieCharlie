@@ -10,28 +10,34 @@ public class AgentInput : MonoBehaviour
     public UnityEvent<int> OnChangeItem = null; // ����Ű 1, 2, 3.. ������ ��
     public UnityEvent OnUseItem = null; // ���콺 ��Ŭ�� �Ƹ���
     public UnityEvent OnHandLight = null; // ������ �̺�Ʈ
+    public UnityEvent OnRemoveItem = null;
 
+    public ButtonManager buttonManager;
     public AudioClip lightClip;
 
     Player player => Define.Player.GetComponent<Player>();
 
     void Update()
     {
-        Move();
-        if (Input.GetMouseButtonDown(0))
+        if (!player.isQuestion())
         {
-            UseItem();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            SoundManager.Instance.PlaySound(lightClip);
-            UseHandLight();
-        }
-        if (Input.GetMouseButtonDown(0) && !player.isQuestion())
-        {
+            Move();
+            if (Input.GetMouseButtonDown(0))
+            {
+                UseItem();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                SoundManager.Instance.PlaySound(lightClip);
+                UseHandLight();
+            }
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Interaction();
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                RemoveItem();
             }
         }
     }
@@ -59,6 +65,11 @@ public class AgentInput : MonoBehaviour
     void UseHandLight()
     {
         OnHandLight?.Invoke();
+    }
+
+    void RemoveItem()
+    {
+        OnRemoveItem?.Invoke();
     }
 
     private void OnGUI()

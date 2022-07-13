@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 962998001308363245}
   - component: {fileID: -1361804324879173034}
   - component: {fileID: 1054898994665796074}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: OrangeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,9 +86,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 294250383
+  m_SortingLayer: 2
+  m_SortingOrder: 30
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &-1361804324879173034
 MonoBehaviour:
@@ -137,13 +137,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 500
+  m_fontSizeBase: 500
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -179,7 +179,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_renderer: {fileID: 962998001308363245}
   m_maskType: 0
 --- !u!114 &1054898994665796074

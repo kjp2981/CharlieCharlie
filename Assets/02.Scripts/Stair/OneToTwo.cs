@@ -11,8 +11,9 @@ public class OneToTwo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player")|| collision.gameObject.CompareTag("Charlie"))
         {
+            Define.Player.GetComponent<Player>().isFstFloor = false;
             Debug.Log("2ÃþÀ¸·Î");
             Define.Player.transform.position = SndFloorPos.position;
         }
