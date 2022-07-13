@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject BoxShow;
 
     public bool isFstFloor;
 
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         hitLayer = 1 << LayerMask.NameToLayer("Item");
         doorLayer = 1 << LayerMask.NameToLayer("Door");
         isFstFloor = true;
+        BoxShow.SetActive(false);
         StartCoroutine(QuestionTimer());
     }
 
@@ -64,6 +66,12 @@ public class Player : MonoBehaviour
             colls = Physics2D.OverlapCircle(transform.position, radius, hitLayer);
             doorChekcColls = Physics2D.OverlapCircle(transform.position, 1, doorLayer);
         }
+        if(isBox)
+            BoxShow.SetActive(true);
+        else
+            BoxShow.SetActive(false);
+
+
     }
 
     public void CheckIsDoor()

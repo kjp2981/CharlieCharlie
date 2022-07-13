@@ -9,6 +9,7 @@ TagManager:
   - Door
   - UpTrigger
   - DownTrigger
+  - Charlie
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,6 @@ TagManager:
   - Door
   - Obstacle
   - Stair
-  - 
   - 
   - 
   - 

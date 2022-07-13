@@ -64,10 +64,12 @@ public class AgentMovement : MonoBehaviour
     {
         OnVelocityChange?.Invoke(currentVelocity);
 
-        if(!player.IsBox)
+        if (!player.IsBox)
             rigid.velocity = moveDirection * currentVelocity;
+        else
+            rigid.velocity = Vector2.zero;
 
-        if(isAdrenaline)
+        if (isAdrenaline)
         {
             StartCoroutine(AdSpeedUP());
         }

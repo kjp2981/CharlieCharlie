@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Box : Item
 {
-
     float curVel;
+
     public override void Reset()
     {
         curVel = Define.Player.GetComponent<AgentMovement>().CurrentVelocity;
@@ -12,7 +12,6 @@ public class Box : Item
 
     public override void UseItem()
     {
-        Debug.Log("¹Ú½º ¤Ñ¤¶¤±");
         Define.Player.GetComponent<Player>().IsBox = true;
         Define.Player.GetComponent<AgentMovement>().CurrentVelocity = 0;
         Invoke("PlayerStop", 5f);

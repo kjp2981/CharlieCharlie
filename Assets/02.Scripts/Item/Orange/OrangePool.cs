@@ -22,10 +22,12 @@ public class OrangePool : Item
     {
         Debug.Log("±Ö »ç¿ëÇÔ");
         OrangeTextPool obj = PoolManager.Instance.Pop("OrangeText") as OrangeTextPool;
-        obj.transform.position = Define.Player.transform.position;
+        Vector3 pos = Define.Player.transform.position;
+        pos.z = 900;
+        obj.transform.position = pos;
         Sequence seq = DOTween.Sequence();
-        seq.Append(obj.transform.DOMoveY(startPos.y + 2, .3f));
-        seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, .3f));
+        seq.Append(obj.transform.DOMoveY(startPos.y + 2, 1f));
+        seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, 1f));
         seq.AppendCallback(() => PoolManager.Instance.Push(obj));
     }
 }
