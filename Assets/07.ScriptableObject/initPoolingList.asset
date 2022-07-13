@@ -21,7 +21,7 @@ MonoBehaviour:
     poolCnt: 10
   - prefab: {fileID: 5133174604161399742, guid: dd6308eeb32df084b8fd79d2a8e4653c, type: 3}
     poolCnt: 10
-  - prefab: {fileID: 8538085715628123745, guid: b7eaae2d66563f343a0424d8bf78e653, type: 3}
+  - prefab: {fileID: 8967016641136219661, guid: 0708442d67bf4c44891e652914bfdf99, type: 3}
     poolCnt: 10
   - prefab: {fileID: 1054898994665796074, guid: 63b0925ad904aa2438065f749b3cdb1e, type: 3}
     poolCnt: 10
@@ -32,4 +32,8 @@ MonoBehaviour:
   - prefab: {fileID: 680883240333302962, guid: 5aaeb9942c454cc40b8d964c0bcd6045, type: 3}
     poolCnt: 10
   - prefab: {fileID: 4145898589930563950, guid: f6c25ff6ac7d67a4f89d4a77e44b5526, type: 3}
+    poolCnt: 10
+  - prefab: {fileID: 4753530316894596816, guid: a82925cf0fcad634fa5682a093998f2c, type: 3}
+    poolCnt: 10
+  - prefab: {fileID: -7627174029644318331, guid: b7eaae2d66563f343a0424d8bf78e653, type: 3}
     poolCnt: 10

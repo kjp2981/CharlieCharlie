@@ -11,7 +11,7 @@ public class OrangePool : Item
     {
 
     }
-    public float moveSpeed = 20f;
+    public float moveSpeed = 1f;
     private Vector3 startPos;
     private void Start()
     {
@@ -24,7 +24,7 @@ public class OrangePool : Item
         OrangePool obj = PoolManager.Instance.Pop("OrangeText") as OrangePool;
         obj.transform.position = startPos;
         Sequence seq = DOTween.Sequence();
-        seq.Append(obj.transform.DOMoveY(startPos.y + 400, .3f));
+        seq.Append(obj.transform.DOMoveY(startPos.y + 2, .3f));
         seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, .3f));
         seq.AppendCallback(() => PoolManager.Instance.Push(obj));
     }

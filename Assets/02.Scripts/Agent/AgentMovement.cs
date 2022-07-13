@@ -29,7 +29,7 @@ public class AgentMovement : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         normalVelocity = currentVelocity;
-        adrenalineVelocity = currentVelocity *= 1.5f;
+        adrenalineVelocity = currentVelocity * 1.5f;
         idBagVelocity = currentVelocity * 1.05f;
     }
 
