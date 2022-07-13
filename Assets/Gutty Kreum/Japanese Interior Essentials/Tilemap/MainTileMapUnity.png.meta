@@ -3592,7 +3592,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 11}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: 11}
       tessellationDetail: 0
       bones: []
       spriteID: 885e2ea4c130f7720800000000000000
@@ -13999,7 +14003,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: -10, y: 16}
+        - {x: -10, y: -16}
       tessellationDetail: 0
       bones: []
       spriteID: da81906fe6acb35e0800000000000000
@@ -14020,7 +14028,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
       tessellationDetail: 0
       bones: []
       spriteID: 8492f516eb17d4ed0800000000000000
@@ -18839,15 +18851,15 @@ TextureImporter:
       MainTileMapUnity_732: 4465457584121233357
       MainTileMapUnity_115: 3618953167269227948
       MainTileMapUnity_56: 2845996909571794312
-      MainTileMapUnity_460: -3580629945922716218
+      MainTileMapUnity_290: 1238355503033559999
       MainTileMapUnity_46: -2383995852320924249
       MainTileMapUnity_118: -8961183861526621593
-      MainTileMapUnity_715: 52382936947398546
+      MainTileMapUnity_205: -7235073733186718946
       MainTileMapUnity_713: -6334667432272451051
-      MainTileMapUnity_290: 1238355503033559999
+      MainTileMapUnity_460: -3580629945922716218
       MainTileMapUnity_289: -4876291537061772580
       MainTileMapUnity_613: -4192026604747668698
-      MainTileMapUnity_205: -7235073733186718946
+      MainTileMapUnity_715: 52382936947398546
       MainTileMapUnity_617: 42096969297249127
       MainTileMapUnity_482: -6250582003618233385
       MainTileMapUnity_153: -8954505573035425936
