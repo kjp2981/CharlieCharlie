@@ -17,7 +17,7 @@ public class HandLight : MonoBehaviour
     {
         while (handLightTimer > 0.0f && handLight.intensity >= 0.0034f)
         {
-            if(!buttonManager.CharlieTime)
+            if(!ButtonManager.Instance.CharlieTime)
             {
                 handLight.intensity -= 0.0034f;
                 handLightTimer -= 0.01f;
