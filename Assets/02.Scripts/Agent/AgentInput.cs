@@ -10,22 +10,25 @@ public class AgentInput : MonoBehaviour
     public UnityEvent<int> OnChangeItem = null; // 숫자키 1, 2, 3.. 눌렀을 때
     public UnityEvent OnUseItem = null; // 마우스 좌클릭 아마도
     public UnityEvent OnHandLight = null; // 손전등 이벤트
-    
+    public ButtonManager buttonManager;
 
     void Update()
     {
-        Move();
-        if (Input.GetKeyDown(KeyCode.F))
+        if(!buttonManager.CharlieTime)
         {
-            Interaction();
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            UseItem();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            UseHandLight();
+            Move();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Interaction();
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                UseItem();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                UseHandLight();
+            }
         }
     }
 

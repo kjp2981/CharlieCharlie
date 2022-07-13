@@ -7,6 +7,7 @@ public class HandLight : MonoBehaviour
 {
     public Light2D handLight;
     protected float handLightTimer = 30;
+    public ButtonManager buttonManager;
 
     private void OnEnable()
     {
@@ -17,8 +18,11 @@ public class HandLight : MonoBehaviour
     {
         while (handLightTimer > 0.0f && handLight.intensity >= 0.0034f)
         {
-            handLight.intensity -= 0.0034f;
-            handLightTimer -= 0.01f;
+            if(!buttonManager.CharlieTime)
+            {
+                handLight.intensity -= 0.0034f;
+                handLightTimer -= 0.01f;
+            }
             yield return new WaitForSeconds(0.1f);
         }
     }
