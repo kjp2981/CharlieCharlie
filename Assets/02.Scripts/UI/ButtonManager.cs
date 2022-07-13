@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using static Define;
 
 public class ButtonManager : MonoBehaviour
@@ -48,15 +48,21 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        player = Define.Player.GetComponent<Player>();
-        SoundManager.Instance.PlayBGMSound(mainBgmClip);
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            player = Define.Player.GetComponent<Player>();
+            SoundManager.Instance.PlayBGMSound(mainBgmClip);
+        }
         //ShuffleList(sprite);
     }
 
     private void Update()
     {
-        if (CharlieTime)
-            pencil.transform.rotation = Quaternion.Slerp(pencil.transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), 0.5f * Time.deltaTime);
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (CharlieTime)
+                pencil.transform.rotation = Quaternion.Slerp(pencil.transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), 0.5f * Time.deltaTime);
+        }
     }
 
     public void LoadSetting()
