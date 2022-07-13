@@ -11,6 +11,8 @@ public class PatrollAction : AIAction
 
     [SerializeField]
     private float moveTime = 3f;
+    [SerializeField]
+    private float patrollTime = 5f;
     private float initMoveTime;
 
     protected override void Awake()
@@ -22,34 +24,24 @@ public class PatrollAction : AIAction
     public override void TakeAction()
     {
         // 주위 돌아다니는 행동
-        if(isLeft == true)
+        if (isLeft == true)
         {
-            ray = Physics2D.Raycast(transform.position, Vector2.left, 1f);
-            if (ray.collider == null)
-                _enemyBrain.Move(Vector2.left, transform.position);
-            else
-            {
-                isLeft = !isLeft;
-                moveTime = initMoveTime;
-            }
+            _enemyBrain.Move(Vector2.left, transform.position);
         }
         else
         {
-            ray = Physics2D.Raycast(transform.position, Vector2.right, 1f);
             _enemyBrain.Move(Vector2.right, transform.position);
-            if (ray.collider == null)
-                _enemyBrain.Move(Vector2.right, transform.position);
-            else
-            {
-                isLeft = !isLeft;
-                moveTime = initMoveTime;
-            }
         }
         moveTime -= Time.deltaTime;
-        if(moveTime < 0)
+        patrollTime -= Time.deltaTime;
+        if (moveTime < 0)
         {
             moveTime = initMoveTime;
             isLeft = !isLeft;
+        }
+        if(patrollTime < 0)
+        {
+            patrollTime = 0;
         }
     }
 }

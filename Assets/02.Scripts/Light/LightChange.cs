@@ -10,8 +10,8 @@ public class LightChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerLight = GameObject.Find("Light").GetComponent<Light2D>();
-        handLight = GameObject.Find("handLight Effect").GetComponent<Light2D>();
+        playerLight = transform.Find("Light").GetComponent<Light2D>();
+        handLight = transform.Find("handLight/handLight Effect").GetComponent<Light2D>();
     }
 
     // Update is called once per frame
