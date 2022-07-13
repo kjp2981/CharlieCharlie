@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2335804775051340451}
   - component: {fileID: 9154299096644158432}
   - component: {fileID: 8893074709163358298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndoorShoesBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
