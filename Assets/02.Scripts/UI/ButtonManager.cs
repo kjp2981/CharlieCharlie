@@ -13,6 +13,17 @@ public class ButtonManager : MonoBehaviour
     public Image imageTwo;
     public Image imageThree;
 
+    public bool CharlieTime = false;
+
+    public Transform pencil;
+
+    public Transform[] YesTrs;
+
+    public Transform[] NoTrs;
+
+    float angle;
+    public bool rotatePencil;
+
     public int curCount = 0;
     public int maxCount = 12;
 
@@ -37,6 +48,12 @@ public class ButtonManager : MonoBehaviour
         ShuffleList(sprite);
     }
 
+    private void Update()
+    {
+        if(CharlieTime)
+            pencil.transform.rotation = Quaternion.Slerp(pencil.transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), 0.5f * Time.deltaTime);
+    }
+
     public void LoadSetting()
     {
         SettingCanvas.SetActive(true);
@@ -48,6 +65,7 @@ public class ButtonManager : MonoBehaviour
 
     public void LoadQuestion()
     {
+        CharlieTime = true;
         iamgeOne.sprite = sprite[curCount++];
         imageTwo.sprite = sprite[curCount++];
         imageThree.sprite = sprite[curCount++];
@@ -64,6 +82,54 @@ public class ButtonManager : MonoBehaviour
         QuestionCanvas.SetActive(false);
     }
 
+    public void AnswerYes()
+    {
+        int random = Random.Range(0, 4);
+        Debug.Log("Yes");
+        Debug.Log(random);
+        pencil.rotation = Quaternion.Euler(0, 0, -90);
+        angle = Mathf.Atan2(YesTrs[random].transform.position.y - pencil.transform.position.y, YesTrs[random].transform.position.x - pencil.transform.position.x) * Mathf.Rad2Deg;
+    }
+
+    public void AnswerNo()
+    {
+        int random = Random.Range(0, 4);
+        Debug.Log("No");
+        Debug.Log(random);
+        pencil.rotation = Quaternion.Euler(0, 0, -90);
+        angle = Mathf.Atan2(NoTrs[random].transform.position.y - pencil.transform.position.y, NoTrs[random].transform.position.x - pencil.transform.position.x) * Mathf.Rad2Deg;
+    }
+
+    public void ClickOne()
+    {
+        int cur = curCount - 3;
+        Debug.Log(1);
+        if (cur % 2 != 0)
+            AnswerYes();
+        else
+            AnswerNo();
+    }
+
+    public void ClickTwo()
+    {
+        int cur = curCount - 2;
+        Debug.Log(2);
+        if (cur % 2 != 0)
+            AnswerYes();
+        else
+            AnswerNo();
+    }
+
+    public void ClickThree()
+    {
+        int cur = curCount - 1;
+        Debug.Log(3);
+        if (cur % 2 != 0)
+            AnswerYes();
+        else
+            AnswerNo();
+    }
+
     public void LoadAnswer()
     {
         CloseQuestion();
@@ -73,13 +139,14 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator AnswerEndTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         CloseAnswer();
     }
 
     public void CloseAnswer()
     {
         AnswerCanvas.SetActive(false);
+        //Time.timeScale = 1;
         player.ChaseFunc();
     }
 

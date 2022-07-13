@@ -10,6 +10,6 @@ public class AttackAction : AIAction
         _aiMovementData.pointOfInterest = transform.position;
         _enemyBrain.Move(_aiMovementData.direction, _aiMovementData.pointOfInterest);
 
-        Debug.Log("게임 끝~~");
+        //Debug.Log("게임 끝~~");
     }
 }

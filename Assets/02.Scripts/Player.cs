@@ -199,13 +199,13 @@ public class Player : MonoBehaviour
                 handLightSprite.flipY = false;
             }
 
-            if(angle > 0 && angle < 270)
+            if(angle > 0 && angle < 180)
             {
-                handLightSprite.sortingOrder = playerSortingOrder + 1;
+                handLightSprite.sortingOrder = playerSortingOrder - 1;
             }
             else
             {
-                handLightSprite.sortingOrder = playerSortingOrder - 1;
+                handLightSprite.sortingOrder = playerSortingOrder + 1;
             }
         }
     }
