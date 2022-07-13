@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
+    public bool isFstFloor;
+
     private Collider2D colls;
 
     private Collider2D doorChekcColls;
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
         doorLayer = 1 << LayerMask.NameToLayer("Door");
-        
+        isFstFloor = true;
         StartCoroutine(QuestionTimer());
     }
 

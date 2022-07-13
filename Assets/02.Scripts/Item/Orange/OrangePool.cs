@@ -20,9 +20,9 @@ public class OrangePool : Item
 
     public override void UseItem()
     {
-        transform.position = Define.Player.transform.position;
-        OrangePool obj = PoolManager.Instance.Pop("OrangeText") as OrangePool;
-        obj.transform.position = startPos;
+        Debug.Log("±Ö »ç¿ëÇÔ");
+        OrangeTextPool obj = PoolManager.Instance.Pop("OrangeText") as OrangeTextPool;
+        obj.transform.position = Define.Player.transform.position;
         Sequence seq = DOTween.Sequence();
         seq.Append(obj.transform.DOMoveY(startPos.y + 2, .3f));
         seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, .3f));

@@ -15,7 +15,7 @@ public class Keyboard : Item
     public override void UseItem()
     {
         curTime = 0f;
-        KeyboardTxt text = PoolManager.Instance.Pop("Keyboard") as KeyboardTxt;
+        KeyboardTxt text = PoolManager.Instance.Pop("keyboardTxt") as KeyboardTxt;
 
         text.transform.position = Define.Player.transform.position + new Vector3(0,1,0);
 
