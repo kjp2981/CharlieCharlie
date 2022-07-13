@@ -38,6 +38,9 @@ Transform:
 SpriteRenderer:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.094111, y: 7.0680704}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2286162657955133534
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
