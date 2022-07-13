@@ -11,27 +11,31 @@ public class AgentInput : MonoBehaviour
     public UnityEvent OnUseItem = null; // ���콺 ��Ŭ�� �Ƹ���
     public UnityEvent OnHandLight = null; // ������ �̺�Ʈ
 
+    public ButtonManager buttonManager;
     public AudioClip lightClip;
 
     Player player => Define.Player.GetComponent<Player>();
 
     void Update()
     {
-        Move();
-        if (Input.GetMouseButtonDown(0))
+        if(!buttonManager.CharlieTime)
         {
-            UseItem();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            SoundManager.Instance.PlaySound(lightClip);
-            UseHandLight();
-        }
-        if (Input.GetMouseButtonDown(0) && !player.isQuestion())
-        {
-            if (Input.GetKeyDown(KeyCode.F))
+            Move();
+            if (Input.GetMouseButtonDown(0))
             {
-                Interaction();
+                UseItem();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                SoundManager.Instance.PlaySound(lightClip);
+                UseHandLight();
+            }
+            if (Input.GetMouseButtonDown(0) && !player.isQuestion())
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    Interaction();
+                }
             }
         }
     }

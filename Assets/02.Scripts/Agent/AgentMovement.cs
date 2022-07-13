@@ -25,6 +25,9 @@ public class AgentMovement : MonoBehaviour
     public UnityEvent<float> OnVelocityChange;
     private Player player => Define.Player.GetComponent<Player>();
 
+    //public ButtonManager buttonManager;
+
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -62,10 +65,13 @@ public class AgentMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         OnVelocityChange?.Invoke(currentVelocity);
 
         if(!player.IsBox)
+        {
             rigid.velocity = moveDirection * currentVelocity;
+        }
 
         if(isAdrenaline)
         {

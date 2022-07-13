@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
     private Collider2D colls;
 
     private Collider2D doorChekcColls;
@@ -43,9 +42,11 @@ public class Player : MonoBehaviour
     public float questionTimer = 5f;
     public float chaseTimer = 0f;
 
+    public AudioClip mainBgmClip;
+
     private void Start()
-    {
-        lightChange = GetComponent<LightChange>();
+    {    
+      lightChange = GetComponent<LightChange>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
         doorLayer = 1 << LayerMask.NameToLayer("Door");
@@ -145,6 +146,8 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+
+        SoundManager.Instance.PlayBGMSound(mainBgmClip);
         StartCoroutine(QuestionTimer());
     }
 
