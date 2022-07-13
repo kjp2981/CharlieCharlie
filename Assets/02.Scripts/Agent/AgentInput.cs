@@ -12,6 +12,7 @@ public class AgentInput : MonoBehaviour
     public UnityEvent OnHandLight = null; // ������ �̺�Ʈ
     public UnityEvent OnRemoveItem = null;
 
+    public ButtonManager buttonManager;
     public AudioClip lightClip;
 
     Player player => Define.Player.GetComponent<Player>();

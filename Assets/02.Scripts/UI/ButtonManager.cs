@@ -35,6 +35,10 @@ public class ButtonManager : MonoBehaviour
 
     private Player player;
 
+    public AudioClip mainBgmClip;
+    public AudioClip questionClip;
+    public AudioClip chaseClip;
+
     private void Awake()
     {
         if (Instance != null)
@@ -45,12 +49,13 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         player = Define.Player.GetComponent<Player>();
-        ShuffleList(sprite);
+        SoundManager.Instance.PlayBGMSound(mainBgmClip);
+        //ShuffleList(sprite);
     }
 
     private void Update()
     {
-        if(CharlieTime)
+        if (CharlieTime)
             pencil.transform.rotation = Quaternion.Slerp(pencil.transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), 0.5f * Time.deltaTime);
     }
 
@@ -71,10 +76,11 @@ public class ButtonManager : MonoBehaviour
         imageThree.sprite = sprite[curCount++];
         if (curCount >= maxCount)
         {
-            ShuffleList(sprite);
+            //ShuffleList(sprite);
             curCount = 0;
         }
         QuestionCanvas.SetActive(true);
+        SoundManager.Instance.PlayBGMSound(questionClip);
     }
 
     public void CloseQuestion()
@@ -139,33 +145,34 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator AnswerEndTimer()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(8f);
         CloseAnswer();
     }
 
     public void CloseAnswer()
     {
         AnswerCanvas.SetActive(false);
-        CharlieTime = false;
         player.ChaseFunc();
+        CharlieTime = false;
+        SoundManager.Instance.PlayBGMSound(chaseClip);
     }
 
 
-    public void ShuffleList<T>(List<T> list)
-    {
-        int random1;
-        int random2;
+    //public void ShuffleList<T>(List<T> list)
+    //{
+    //    int random1;
+    //    int random2;
 
-        T tmp;
+    //    T tmp;
 
-        for (int index = 0; index < list.Count; ++index)
-        {
-            random1 = UnityEngine.Random.Range(0, list.Count);
-            random2 = UnityEngine.Random.Range(0, list.Count);
+    //    for (int index = 0; index < list.Count; ++index)
+    //    {
+    //        random1 = UnityEngine.Random.Range(0, list.Count);
+    //        random2 = UnityEngine.Random.Range(0, list.Count);
 
-            tmp = list[random1];
-            list[random1] = list[random2];
-            list[random2] = tmp;
-        }
-    }
+    //        tmp = list[random1];
+    //        list[random1] = list[random2];
+    //        list[random2] = tmp;
+    //    }
+    //}
 }
