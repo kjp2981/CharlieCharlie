@@ -20,7 +20,7 @@ public class GlobalLightChange : MonoBehaviour
         }
         else
         {
-            float num = 70f / 255f;
+            float num = 20f / 255f;
             globalLight.color = new Color(num, num, num, 1);
         }
     }

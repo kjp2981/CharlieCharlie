@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 3caca797088d7d34ca6aaadde51b42e3, type: 2}
-  text: {fileID: 4480434523217757329, guid: ccabf38b5bf124a4095bab8fa812d785, type: 3}
+  moveSpeed: 20
 --- !u!61 &1952850570070563158
 BoxCollider2D:
   m_ObjectHideFlags: 0

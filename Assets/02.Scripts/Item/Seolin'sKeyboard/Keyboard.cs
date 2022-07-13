@@ -6,24 +6,23 @@ using UnityEngine;
 
 public class Keyboard : Item
 {
-    public GameObject text;
-    float curTime;
+    public float moveSpeed = 1f;
+    private Vector3 startPos;
     public override void Reset()
     {
     }
 
     public override void UseItem()
     {
-        curTime = 0f;
-        KeyboardTxt text = PoolManager.Instance.Pop("keyboardTxt") as KeyboardTxt;
+        KeyboardTxt obj = PoolManager.Instance.Pop("keyboardTxt") as KeyboardTxt;
 
-        text.transform.position = Define.Player.transform.position + new Vector3(0,1,0);
-
-        for (float i = curTime; i < 5f; i+=Time.time)
-        {
-
-        }
-        Debug.Log("delete");
+        Vector3 pos = Define.Player.transform.position;
+        pos.z = 900;
+        obj.transform.position = pos;
+        Sequence seq = DOTween.Sequence();
+        seq.Append(obj.transform.DOMoveY(startPos.y + 2, 1f));
+        seq.Join(obj.GetComponent<TextMeshPro>().DOFade(0, 1f));
+        seq.AppendCallback(() => PoolManager.Instance.Push(obj));
 
     }
 
