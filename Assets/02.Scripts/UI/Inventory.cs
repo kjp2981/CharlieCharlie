@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Slot[] keySlots;
 
+    [SerializeField]
+    private Image currentImage = null;
     private int currentSlotIndex = 0;
 
+    private RectTransform initTransform;
 
     private void OnValidate()
     {
@@ -33,7 +37,33 @@ public class Inventory : MonoBehaviour
             Debug.LogError("Multiple GameManager is running");
         Instance = this;
 
+        initTransform = currentImage.rectTransform;
         FreshSlot();
+    }
+
+    private void Update()
+    {
+        switch (currentSlotIndex)
+        {
+            case 0:
+                currentImage.rectTransform.position = new Vector2(80, initTransform.position.y);
+                break;
+            case 1:
+                currentImage.rectTransform.position = new Vector2(190, initTransform.position.y);
+                break;
+            case 2:
+                currentImage.rectTransform.position = new Vector2(300, initTransform.position.y);
+                break;
+            case 3:
+                currentImage.rectTransform.position = new Vector2(410, initTransform.position.y);
+                break;
+            case 4:
+                currentImage.rectTransform.position = new Vector2(520, initTransform.position.y);
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public void FreshSlot()
@@ -106,8 +136,11 @@ public class Inventory : MonoBehaviour
     {
         if (items.Count > 0)
         {
-            items[currentSlotIndex].GetComponent<Item>().UseItem();
-            RemoveItem();
+            if (items[currentSlotIndex] != null)
+            {
+                items[currentSlotIndex].GetComponent<Item>().UseItem();
+                RemoveItem();
+            }
         }
     }
 
