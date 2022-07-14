@@ -1,28 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FloorTxtCtrl : MonoBehaviour
 {
-    public GameObject OneTxt;
-    public GameObject TwoTxt;
+    public TextMeshProUGUI text;
     void Start()
     {
-        OneTxt.SetActive(true);
-        TwoTxt.SetActive(false);
+        text.text = "<color=red>1Ãþ</color>";
     }
-
     void Update()
     {
         if(Define.Player.GetComponent<Player>().isFstFloor == true)
         {
-            OneTxt.SetActive(true);
-            TwoTxt.SetActive(false);
+            text.text = "<color=red>1F</color>";
         }
         else
         {
-            OneTxt.SetActive(false);
-            TwoTxt.SetActive(true);
+            text.text = "<color=red>2F</color>";
         }
     }
 }

@@ -13,10 +13,6 @@ public class PlaceTxtCtrl : MonoBehaviour
         placeTxt.text = textString;
     }
 
-    private void Update()
-    {
-        placeTxt.transform.position = Define.Player.transform.position + new Vector3(8, 5, 0);
-    }
     [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,7 +29,10 @@ public class PlaceTxtCtrl : MonoBehaviour
                 placeTxt.text = $"<color=red>{i}반 교실</color>";
             }
         }
-
+        if (collision.gameObject.CompareTag("BathRoom1"))
+        {
+            placeTxt.text = "<color=red>화장실</color>";
+        }
     }
 
 

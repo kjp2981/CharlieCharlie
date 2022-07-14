@@ -15,6 +15,17 @@ TagManager:
   - Class2
   - Class3
   - Class4
+  - BathRoom1
+  - ScienceRoom
+  - MedicalRoom
+  - ComputerRoom
+  - PrincipalRoom
+  - Library
+  - MusicRoom
+  - SercurityRoom
+  - Teacher'sRoom
+  - Undefined
+  - ZZamRoom
   layers:
   - Default
   - TransparentFX
