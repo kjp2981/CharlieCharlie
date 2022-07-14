@@ -13,7 +13,7 @@ public class CameraShake : MonoBehaviour
 
     public IEnumerator Shake()
     {
-        VCam.GetComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 3f;
+        VCam.GetComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = shakeOffset;
         yield return new WaitForSeconds(shakeTime);
         VCam.GetComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0f;
     }
