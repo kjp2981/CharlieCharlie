@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlaceTxtCtrl : MonoBehaviour
 {
-    public TextMeshPro placeTxt;
+    public TextMeshProUGUI placeTxt;
     public string textString;
     private void Start()
     {
