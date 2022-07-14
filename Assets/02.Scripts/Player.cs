@@ -59,7 +59,19 @@ public class Player : MonoBehaviour
         StartCoroutine(QuestionTimer());
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 10)
+        {
+            Debug.Log("1층");
+            isFstFloor = true;
+        }
+        if (collision.gameObject.layer == 11)
+        {
+            Debug.Log("2층");
+            isFstFloor = false;
+        }
+    }
     private void Update()
     {
         if (isFlashLight == true)
@@ -105,6 +117,7 @@ public class Player : MonoBehaviour
             Debug.Log("���� ����");
     }
 
+    
     IEnumerator QuestionTimer()
     {
         while (questionTimer > 1.0f)
