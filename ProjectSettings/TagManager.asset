@@ -10,6 +10,11 @@ TagManager:
   - UpTrigger
   - DownTrigger
   - Charlie
+  - Root
+  - Class1
+  - Class2
+  - Class3
+  - Class4
   layers:
   - Default
   - TransparentFX
