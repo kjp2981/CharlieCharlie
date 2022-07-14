@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
         {
             keySlots[i].Item = keyItems[i].GetComponent<Item>().ItemSO;
         }
-        for (; i < keySlots.Length; i++)
+        for (; i < itemSlots.Length; i++)
         {
             keySlots[i].Item = null;
         }
@@ -120,13 +120,10 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem()
     {
-        if (items.Count > 0)
+        if(items.Count > 0)
         {
-            if (items[currentSlotIndex] != null)
-            {
-                items.RemoveAt(currentSlotIndex);
-                FreshSlot();
-            }
+            items.RemoveAt(currentSlotIndex);
+            FreshSlot();
         }
         else
         {

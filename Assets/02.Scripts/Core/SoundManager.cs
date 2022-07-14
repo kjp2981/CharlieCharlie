@@ -1,16 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance = null;
-
-    [SerializeField]
-    private Slider bgmSlider;
-    [SerializeField]
-    private Slider effectSlider;
 
     [SerializeField]
     private AudioSource bgmAudioSource = null;
@@ -35,7 +29,6 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         Audio audio = PoolManager.Instance.Pop("Audio") as Audio;
-        audio.GetComponent<AudioSource>().volume = effectSlider.value;
         audio.PlaySound(clip);
     }
 
@@ -48,15 +41,5 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(-soundRandomness, soundRandomness));
         PlaySound(clip);
-    }
-
-    public void BgmValue()
-    {
-        bgmAudioSource.volume = bgmSlider.value;
-    }
-
-    public void Update()
-    {
-        BgmValue();
     }
 }
