@@ -58,9 +58,11 @@ public class Player : MonoBehaviour
 
     public Transform charlieSpawn;
 
+    public GameObject FKey;
 
     private void Start()
-    {    
+    {
+        FKey.SetActive(false);
       lightChange = GetComponent<LightChange>();
         handLightSprite = handLight.GetComponent<SpriteRenderer>();
         hitLayer = 1 << LayerMask.NameToLayer("Item");
@@ -72,6 +74,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.layer==6)
+        {
+            FKey.SetActive(true);
+        }
         if(collision.gameObject.layer == 10)
         {
             isFstFloor = true;
@@ -81,6 +87,7 @@ public class Player : MonoBehaviour
             isFstFloor = false;
         }
     }
+
     private void Update()
     {
         if (isFlashLight == true)
@@ -88,6 +95,13 @@ public class Player : MonoBehaviour
             colls = Physics2D.OverlapCircle(transform.position, radius, hitLayer);
             doorChekcColls = Physics2D.OverlapCircle(transform.position, 1, doorLayer);
         }
+
+        if (colls != null)
+        {
+            FKey.SetActive(true);
+        }
+        else
+            FKey.SetActive(false);
         if(isBox)
             BoxShow.SetActive(true);
         else
