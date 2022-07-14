@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private int playerSortingOrder = 10;
 
     public bool isChalkOn;
+    public bool cutScene = true;
 
     private int hitLayer;
 
@@ -46,7 +47,16 @@ public class Player : MonoBehaviour
     public float questionTimer = 5f;
     public float chaseTimer = 0f;
 
+    public AudioClip doorClip;
+
     public AudioClip mainBgmClip;
+
+    public AudioClip charlieEffectClip;
+
+    public GameObject charlie;
+
+    public Transform charlieSpawn;
+
 
     private void Start()
     {    
@@ -72,8 +82,6 @@ public class Player : MonoBehaviour
             BoxShow.SetActive(true);
         else
             BoxShow.SetActive(false);
-
-
     }
 
     public void CheckIsDoor()
@@ -96,6 +104,7 @@ public class Player : MonoBehaviour
             {
                 if (door.Key.name == Inventory.Instance.keyItems[i].GetComponent<Item>().ItemSO.name)
                 {
+                    SoundManager.Instance.PlaySound(doorClip);
                     doorChekcColls.gameObject.GetComponent<Collider2D>().enabled = false;
                     doorChekcColls.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0); // ���߿� ����
                     return;
@@ -110,7 +119,8 @@ public class Player : MonoBehaviour
     {
         while (questionTimer > 1.0f)
         {
-            questionTimer -= 1f;
+            if (!cutScene)
+                questionTimer -= 1f;
             yield return new WaitForSeconds(1f);
         }
         chaseTimer = 20f;
@@ -124,7 +134,11 @@ public class Player : MonoBehaviour
 
     IEnumerator ChaseStart()
     {
+        charlie.transform.position = charlieSpawn.transform.position;
+        SoundManager.Instance.PlaySound(charlieEffectClip);
+        charlie.gameObject.SetActive(true);
         lightChange.ChangeRedLight();
+
         switch (Inventory.Instance.keyItems.Count)
         {
             case 1:
@@ -157,7 +171,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-
+        charlie.gameObject.SetActive(false);
         SoundManager.Instance.PlayBGMSound(mainBgmClip);
         StartCoroutine(QuestionTimer());
     }

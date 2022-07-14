@@ -38,6 +38,7 @@ public class ButtonManager : MonoBehaviour
     public AudioClip mainBgmClip;
     public AudioClip questionClip;
     public AudioClip chaseClip;
+    public AudioClip gameOverClip;
 
     private void Awake()
     {
@@ -48,10 +49,18 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SoundManager.Instance.PlayBGMSound(questionClip);
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
         {
             player = Define.Player.GetComponent<Player>();
             SoundManager.Instance.PlayBGMSound(mainBgmClip);
+        }
+        else if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SoundManager.Instance.PlayBGMSound(gameOverClip);
         }
         //ShuffleList(sprite);
     }
