@@ -10,7 +10,14 @@ public class HandLight : MonoBehaviour
 
     private void OnEnable()
     {
+        StopAllCoroutines();
+
         StartCoroutine(Brightness());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator Brightness()
