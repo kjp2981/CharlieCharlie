@@ -11,5 +11,6 @@ public class AttackAction : AIAction
         _enemyBrain.Move(_aiMovementData.direction, _aiMovementData.pointOfInterest);
 
         //Debug.Log("∞‘¿” ≥°~~");
+        SceneManager.Instance.ChangeScene("GameOver");
     }
 }
