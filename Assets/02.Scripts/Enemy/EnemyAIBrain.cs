@@ -19,12 +19,20 @@ public class EnemyAIBrain : MonoBehaviour
 
     [SerializeField]
     private float delayTime = 3f;
+    private float initDelayTime;
 
     public float DelayTime { get => delayTime; set => delayTime = value; }
 
     protected virtual void Awake()
     {
         _aiActionData = transform.Find("AI").GetComponent<AIActionData>();
+        initDelayTime = delayTime;
+    }
+
+    private void OnDisable()
+    {
+        delayTime = initDelayTime;
+        ChangeState(transform.Find("AI/IdleState").GetComponent<AIState>());
     }
 
     public void SetAttackState(bool state)

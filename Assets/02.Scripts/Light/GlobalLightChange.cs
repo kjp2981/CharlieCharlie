@@ -7,6 +7,9 @@ public class GlobalLightChange : MonoBehaviour
 {
     private Light2D globalLight;
 
+    [SerializeField]
+    private float offset = 20f;
+
     void Start()
     {
         globalLight = GetComponent<Light2D>();
@@ -20,7 +23,7 @@ public class GlobalLightChange : MonoBehaviour
         }
         else
         {
-            float num = 20f / 255f;
+            float num = offset / 255f;
             globalLight.color = new Color(num, num, num, 1);
         }
     }
