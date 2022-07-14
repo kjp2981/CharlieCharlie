@@ -8,10 +8,8 @@ public class MainGate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("정문 도착!");
-            Debug.Log("엔딩 컷신 시작");
-            Debug.Log("엔딩 컷신 후 메인메뉴로 이동");
-            //SceneManager.Instance.ChangeScene("MainMenu");
+            CutSceneManager.Instance.IsCutSceneChange(true);
+            CutSceneManager.Instance.PlayEndingCutscene();
         }
     }
 }

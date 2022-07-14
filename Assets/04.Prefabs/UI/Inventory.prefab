@@ -191,7 +191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5689589778656674616
@@ -286,8 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   keyItems:
-  - {fileID: 1708401106715959068, guid: 0708442d67bf4c44891e652914bfdf99, type: 3}
-  - {fileID: 1708401106715959068, guid: 0708442d67bf4c44891e652914bfdf99, type: 3}
+  - {fileID: 0}
   itemSlotParent: {fileID: 5689589777819003255}
   keySlotParent: {fileID: 5689589778385360619}
   itemSlots:

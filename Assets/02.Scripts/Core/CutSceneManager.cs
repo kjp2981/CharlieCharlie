@@ -23,4 +23,9 @@ public class CutSceneManager : MonoBehaviour
     {
         isCutscene = value;
     }
+
+    public void PlayEndingCutscene()
+    {
+        director.Play();
+    }
 }
