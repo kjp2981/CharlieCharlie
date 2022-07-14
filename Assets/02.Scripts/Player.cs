@@ -88,6 +88,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetFirstPos()
+    {
+        //transform.position = new Vector3(34.22f, 21.11f, 0f);
+        transform.Find("VIsualSprite").transform.localPosition = Vector3.zero;
+    }
+
     private void Update()
     {
         if (isFlashLight == true)

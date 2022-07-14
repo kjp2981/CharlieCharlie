@@ -19,7 +19,7 @@ public class AgentInput : MonoBehaviour
 
     void Update()
     {
-        if (!player.isQuestion()&&!buttonManager.CharlieTime)
+        if (!player.isQuestion()&&!buttonManager.CharlieTime && !CutSceneManager.Instance.IsCutscene)
         {
             Move();
             if (Input.GetMouseButtonDown(0))

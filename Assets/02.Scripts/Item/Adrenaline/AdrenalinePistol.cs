@@ -13,9 +13,10 @@ public class AdrenalinePistol : Item
     }
     public override void UseItem()
     {
-        if (Define.Player.GetComponent<AgentMovement>().isAdrenalining == false)
-            isAd = !isAd;
-        Define.Player.GetComponent<AgentMovement>().isAdrenaline = isAd;
+        //if (Define.Player.GetComponent<AgentMovement>().isAdrenalining == false)
+        //    isAd = !isAd;
+        //Define.Player.GetComponent<AgentMovement>().isAdrenaline = isAd;
+        Define.Player.GetComponent<AgentMovement>().adreSpeedUp();
         Debug.Log("Use Adrenaline");
     }
 

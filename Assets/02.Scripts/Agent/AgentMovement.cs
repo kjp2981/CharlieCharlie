@@ -17,6 +17,7 @@ public class AgentMovement : MonoBehaviour
         get => currentVelocity;
         set => currentVelocity = value;
     }
+    [System.Obsolete]
     private float normalVelocity;
     private float adrenalineVelocity;
     private float idBagVelocity;
@@ -32,8 +33,8 @@ public class AgentMovement : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         normalVelocity = currentVelocity;
-        adrenalineVelocity = currentVelocity * 1.5f;
-        idBagVelocity = currentVelocity * 1.05f;
+        adrenalineVelocity = 1.5f;
+        idBagVelocity = 1.05f;
     }
 
     public void Movement(Vector2 input)
@@ -78,14 +79,68 @@ public class AgentMovement : MonoBehaviour
 
         if (isAdrenaline)
         {
-            StartCoroutine(AdSpeedUP());
+            if (isIdBag)
+            {
+                if (CutSceneManager.Instance.IsCutscene == false)
+                {
+                    if (!player.IsBox)
+                        rigid.velocity = moveDirection * currentVelocity * adrenalineVelocity * idBagVelocity;
+                    else
+                        rigid.velocity = Vector2.zero;
+                }
+                else
+                {
+                    if (!player.IsBox)
+                        rigid.velocity = moveDirection * currentVelocity * adrenalineVelocity;
+                    else
+                        rigid.velocity = Vector2.zero;
+                }
+            }
+            //StartCoroutine(AdSpeedUP());
+            else
+            {
+                if (CutSceneManager.Instance.IsCutscene == false)
+                {
+                    if (!player.IsBox)
+                        rigid.velocity = moveDirection * currentVelocity * adrenalineVelocity;
+                    else
+                        rigid.velocity = Vector2.zero;
+                }
+            }
         }
-
-        if(isIdBag)
+        else if(isIdBag)
         {
-            IdSpeedUP();
+            //IdSpeedUP();
+            if (CutSceneManager.Instance.IsCutscene == false)
+            {
+                if (!player.IsBox)
+                    rigid.velocity = moveDirection * currentVelocity * idBagVelocity;
+                else
+                    rigid.velocity = Vector2.zero;
+            }
         }
+        else
+        {
+            if (CutSceneManager.Instance.IsCutscene == false)
+            {
+                if (!player.IsBox)
+                    rigid.velocity = moveDirection * currentVelocity;
+                else
+                    rigid.velocity = Vector2.zero;
+            }
+        }
+    }
 
+    public void adreSpeedUp()
+    {
+        StartCoroutine(adreSpeedUpCoroutine());
+    }
+
+    public IEnumerator adreSpeedUpCoroutine()
+    {
+        isAdrenaline = true;
+        yield return new WaitForSeconds(5f);
+        isAdrenaline = false;
     }
 
     public void IdSpeedUP()

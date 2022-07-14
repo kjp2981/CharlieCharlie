@@ -41,6 +41,11 @@ public class Inventory : MonoBehaviour
         FreshSlot();
     }
 
+    private void OnEnable()
+    {
+        FreshSlot();
+    }
+
     private void Update()
     {
         switch (currentSlotIndex)
