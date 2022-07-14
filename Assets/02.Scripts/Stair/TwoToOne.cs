@@ -5,8 +5,8 @@ using UnityEngine;
 public class TwoToOne : MonoBehaviour
 {
     public Transform FstFloorPos;
-    
 
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,4 +17,6 @@ public class TwoToOne : MonoBehaviour
             Define.Player.transform.position = FstFloorPos.position;
         }
     }
+
+    
 }
