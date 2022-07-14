@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
     private int playerSortingOrder = 10;
 
     public bool isChalkOn;
-    public bool cutScene = true;
 
     private int hitLayer;
 
@@ -129,7 +128,7 @@ public class Player : MonoBehaviour
     {
         while (questionTimer > 1.0f)
         {
-            if (!cutScene)
+            if (!CutSceneManager.Instance.IsCutscene)
                 questionTimer -= 1f;
             yield return new WaitForSeconds(1f);
         }

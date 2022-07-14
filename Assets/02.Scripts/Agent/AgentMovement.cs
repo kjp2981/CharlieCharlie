@@ -68,10 +68,13 @@ public class AgentMovement : MonoBehaviour
 
         OnVelocityChange?.Invoke(currentVelocity);
 
-        if (!player.IsBox)
-            rigid.velocity = moveDirection * currentVelocity;
-        else
-            rigid.velocity = Vector2.zero;
+        if (CutSceneManager.Instance.IsCutscene == false)
+        {
+            if (!player.IsBox)
+                rigid.velocity = moveDirection * currentVelocity;
+            else
+                rigid.velocity = Vector2.zero;
+        }
 
         if (isAdrenaline)
         {
