@@ -73,12 +73,10 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.layer == 10)
         {
-            Debug.Log("1ì¸?);
             isFstFloor = true;
         }
         if (collision.gameObject.layer == 11)
         {
-            Debug.Log("2ì¸?);
             isFstFloor = false;
         }
     }
