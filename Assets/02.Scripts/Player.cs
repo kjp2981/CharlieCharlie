@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Collider2D doorChekcColls;
 
+    public GameObject cutSceneObject;
+
     [SerializeField]
     private float radius = 1f;
     public GameObject orangeText;
@@ -102,6 +104,19 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void CutSceneFT()
+    {
+        if(cutSceneObject.activeSelf)
+        {
+            cutSceneObject.SetActive(false);
+        }
+        else
+        {
+            cutSceneObject.SetActive(true);
+        }
+    }
+
     public void KeyCheck()
     {
         int itemsCnt = Inventory.Instance.keyItems.Count;
