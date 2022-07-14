@@ -10,7 +10,8 @@ public class TextProduction: MonoBehaviour
 
     void Start()
     {
-        Repeating();
+        //Repeating();
+        StartCoroutine(CreateText());
     }
 
     void Repeating()
@@ -18,15 +19,19 @@ public class TextProduction: MonoBehaviour
         InvokeRepeating("CreateText", 0, 0.1f);
     }
 
-    void CreateText()
+    public IEnumerator CreateText()
     {
-        randomX = Random.Range(-19200f, 19200f);
-        randomY = Random.Range(-10800f, 10800f);
+        for (int i = 0; i < 1000; i++)
+        {
+            randomX = Random.Range(-19200f, 19200f);
+            randomY = Random.Range(-10800f, 10800f);
 
 
-        Square obj = PoolManager.Instance.Pop("Square") as Square;
+            Square obj = PoolManager.Instance.Pop("Square") as Square;
 
-        obj.transform.position = new Vector2(randomX, randomY);
-        obj.transform.position = Cam.ScreenToViewportPoint(obj.transform.position);
+            obj.transform.position = new Vector2(randomX, randomY);
+            obj.transform.position = Cam.ScreenToViewportPoint(obj.transform.position);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

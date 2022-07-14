@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
                 questionTimer -= 1f;
             yield return new WaitForSeconds(1f);
         }
-        chaseTimer = 20f;
+        chaseTimer = 15f;
         ButtonManager.Instance.LoadQuestion();
     }
 
@@ -179,44 +179,50 @@ public class Player : MonoBehaviour
 
     IEnumerator ChaseStart()
     {
+        switch (Inventory.Instance.keyItems.Count)
+        {
+            case 1:
+                questionTimer = 40;
+                break;
+            case 2:
+                questionTimer = 35;
+                break;
+            case 3:
+                questionTimer = 30;
+                break;
+            case 4:
+                questionTimer = 25;
+                break;
+            case 5:
+                questionTimer = 20;
+                break;
+            case 6:
+                questionTimer = 10f;
+                break;
+            case 7:
+                questionTimer = 5f;
+                chaseTimer = 9999f;
+                break;
+            default:
+                questionTimer = 40;
+                break;
+        }
         charlie.transform.position = charlieSpawn.transform.position;
         SoundManager.Instance.PlaySound(charlieEffectClip);
         charlie.gameObject.SetActive(true);
         lightChange.ChangeRedLight();
-
-        switch (Inventory.Instance.keyItems.Count)
-        {
-            case 1:
-                questionTimer = 30f;
-                break;
-            case 2:
-                questionTimer = 25f;
-                break;
-            case 3:
-                questionTimer = 20f;
-                break;
-            case 4:
-                questionTimer = 15f;
-                break;
-            case 5:
-                questionTimer = 10f;
-                break;
-            case 6:
-                questionTimer = 5f;
-                break;
-            default:
-                questionTimer = 30f;
-                break;
-        }
         while (chaseTimer > 0.0f)
         {
             chaseTimer -= 1f;
             if(chaseTimer<=0.0f)
+            {
                 lightChange.ChangeYelowLight();
+                charlie.gameObject.SetActive(false);
+            }
+    
             yield return new WaitForSeconds(1f);
         }
 
-        charlie.gameObject.SetActive(false);
         SoundManager.Instance.PlayBGMSound(mainBgmClip);
         StartCoroutine(QuestionTimer());
     }

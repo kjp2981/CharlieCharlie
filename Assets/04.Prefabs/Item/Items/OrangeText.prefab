@@ -110,7 +110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=green>\uC74C \uB9DB\uC788\uB2F9</color>"
+  m_text: "<color=green>\uC11C\uB9B0 \uC324\uC758 \uD058 \uC57C\uBBF8!</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4f73d2c60b0073498043b143ccdde3f, type: 2}
   m_sharedMaterial: {fileID: -4802736786998833, guid: c4f73d2c60b0073498043b143ccdde3f, type: 2}

@@ -9,7 +9,8 @@ public class MainGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CutSceneManager.Instance.IsCutSceneChange(true);
-            CutSceneManager.Instance.PlayEndingCutscene();
+            //CutSceneManager.Instance.PlayEndingCutscene();
+            SceneManager.Instance.ChangeScene("MainMenu");
         }
     }
 }
