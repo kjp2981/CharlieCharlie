@@ -5,6 +5,7 @@ using UnityEngine;
 public class Setting : MonoBehaviour
 {
     public GameObject SettingGrp;
+
     void Awake()
     {
         SettingGrp.SetActive(false);

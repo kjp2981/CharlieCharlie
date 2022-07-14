@@ -86,6 +86,7 @@ public class ButtonManager : MonoBehaviour
     public void LoadQuestion()
     {
         CharlieTime = true;
+        Define.Player.GetComponent<AgentMovement>().ResetVelcity();
         iamgeOne.sprite = sprite[curCount++];
         imageTwo.sprite = sprite[curCount++];
         imageThree.sprite = sprite[curCount++];

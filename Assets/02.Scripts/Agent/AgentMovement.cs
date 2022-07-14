@@ -105,4 +105,10 @@ public class AgentMovement : MonoBehaviour
         currentVelocity = normalVelocity;
 
     }
+
+    public void ResetVelcity()
+    {
+        currentVelocity = 0f;
+        rigid.velocity = Vector2.zero;
+    }
 }
